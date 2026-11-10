@@ -17,7 +17,7 @@ npm run dev
 ![ss](public/img/ss2.png)
 
 
-http://localhost:3000
+http://localhost:3000 / https://humanitytech.vercel.app/
 
 ## Struktur folder
 
