@@ -1,0 +1,57 @@
+/* =========================================================
+   variables.css
+   Tempat semua "bahan dasar" desain HumanityTech.
+   ========================================================= */
+
+:root {
+  /* ---------- Warna utama ---------- */
+  --warna-putih: #ffffff;
+  --warna-permukaan: #f4f7f3;      
+
+  --warna-navy: #16284a;           
+  --warna-navy-tua: #0e1b33;       
+  --warna-navy-teks: #4a5a75;      
+
+  --warna-sage: #8fa98c;           
+  --warna-sage-tua: #5f7d5e;       
+  --warna-sage-muda: #dfe8dc;      
+
+  --warna-garis: #dde4dc;          
+
+  /* ---------- Warna dengan fungsi ---------- */
+  --warna-latar: var(--warna-putih);
+  --warna-teks: var(--warna-navy);
+  --warna-tautan: var(--warna-sage-tua);
+  --warna-fokus: var(--warna-sage-tua);
+
+  /* ---------- Font diatur layout.js) ---------- */
+  --font-judul-keluarga: var(--font-judul), Georgia, serif;
+  --font-isi-keluarga: var(--font-isi), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ---------- Ukuran teks ---------- */
+  --teks-kecil: 0.875rem;
+  --teks-dasar: 1rem;
+  --teks-besar: 1.25rem;
+  --judul-3: 1.375rem;
+  --judul-2: clamp(1.625rem, 1.2rem + 1.6vw, 2.25rem);
+  --judul-1: clamp(2rem, 1.4rem + 2.8vw, 3.25rem);
+
+  /* ---------- Jarak ---------- */
+  --jarak-1: 0.25rem;
+  --jarak-2: 0.5rem;
+  --jarak-3: 1rem;
+  --jarak-4: 1.5rem;
+  --jarak-5: 2.5rem;
+  --jarak-6: 4rem;
+
+  /* ---------- Bentuk ---------- */
+  --lengkung-kecil: 6px;
+  --lengkung-sedang: 12px;
+  --lebar-konten: 72rem;           
+  --lebar-baca: 40rem;             
+
+  /* Ctt: titik pindah responsif yang dipakai di seluruh proyek:
+     ponsel   : di bawah 640px
+     tablet   : 640px ke atas
+     desktop  : 960px ke atas */
+}

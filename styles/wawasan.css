@@ -1,0 +1,187 @@
+/* =========================================================
+    wawasan.css
+    Khusus halaman Wawasan.
+   ========================================================= */
+
+/* ---------- Judul halaman ---------- */
+.wawasan-kepala {
+  padding-block: var(--jarak-5) var(--jarak-3);
+}
+
+.wawasan-pengantar {
+  max-width: var(--lebar-baca);
+  margin: 0;
+  font-size: var(--teks-besar);
+  color: var(--warna-navy-teks);
+}
+
+/* ---------- Tata letak: daftar topik + isi ---------- */
+.wawasan-tata {
+  display: grid;
+  gap: var(--jarak-5);
+}
+
+.wawasan-tata > * {
+  min-width: 0;
+}
+
+/* ---------- Daftar topik ---------- */
+.wawasan-indeks-judul {
+  margin: 0 0 var(--jarak-2);
+  font-weight: 700;
+  color: var(--warna-navy-teks);
+}
+
+.wawasan-indeks ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--jarak-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wawasan-indeks a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  border-bottom: 2px solid var(--warna-sage);
+  color: var(--warna-navy);
+  text-decoration: none;
+}
+
+.wawasan-indeks a:hover {
+  border-bottom-color: var(--warna-sage-tua);
+  color: var(--warna-navy);
+}
+
+@media (min-width: 960px) {
+  .wawasan-tata {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: var(--jarak-6);
+    align-items: start;
+  }
+
+  .wawasan-indeks {
+    position: sticky;
+    top: var(--jarak-4);
+  }
+
+  .wawasan-indeks ul {
+    display: grid;
+    gap: 0;
+  }
+
+  .wawasan-indeks a {
+    display: block;
+    padding: 0.5rem 0 0.5rem var(--jarak-3);
+    border-bottom: 0;
+    border-left: 2px solid var(--warna-garis);
+  }
+
+  .wawasan-indeks a:hover {
+    border-left-color: var(--warna-sage-tua);
+  }
+}
+
+/* ---------- Satu topik ---------- */
+.topik + .topik {
+  margin-top: var(--jarak-6);
+  padding-top: var(--jarak-6);
+  border-top: 1px solid var(--warna-garis);
+}
+
+.topik h3 {
+  margin-bottom: var(--jarak-2);
+  font-size: var(--teks-besar);
+}
+
+.topik-judul {
+  margin-bottom: var(--jarak-3);
+}
+
+.topik-ringkas {
+  max-width: var(--lebar-baca);
+  margin-bottom: var(--jarak-5);
+  font-family: var(--font-judul-keluarga);
+  font-size: var(--judul-3);
+  line-height: 1.4;
+}
+
+/* ---------- Dua sudut pandang ---------- */
+.sudut {
+  display: grid;
+  gap: var(--jarak-4);
+  margin-bottom: var(--jarak-5);
+}
+
+.sudut > div {
+  padding-top: var(--jarak-3);
+  border-top-width: 3px;
+  border-top-style: solid;
+}
+
+/* sudut pandang: navy = Informatika, sage = Sosiologi */
+.sudut-informatika {
+  border-top-color: var(--warna-navy);
+}
+
+.sudut-sosiologi {
+  border-top-color: var(--warna-sage);
+}
+
+.sudut p {
+  margin: 0 0 var(--jarak-3);
+}
+
+.sudut p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .sudut {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--jarak-5);
+  }
+}
+
+/* ---------- Contoh dan langkah ---------- */
+.topik-bagian {
+  margin-bottom: var(--jarak-5);
+}
+
+.topik-bagian:last-child {
+  margin-bottom: 0;
+}
+
+.topik-bagian p {
+  max-width: var(--lebar-baca);
+  margin: 0;
+}
+
+.topik-langkah ul {
+  max-width: var(--lebar-baca);
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.topik-langkah li {
+  margin-bottom: var(--jarak-2);
+  padding-left: var(--jarak-1);
+}
+
+.topik-langkah li::marker {
+  color: var(--warna-sage-tua);
+}
+
+/* ---------- Penutup ---------- */
+.wawasan-lanjut {
+  max-width: var(--lebar-baca);
+  margin-bottom: var(--jarak-4);
+  color: var(--warna-navy-teks);
+}
+
+.wawasan-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jarak-3);
+}

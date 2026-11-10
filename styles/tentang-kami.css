@@ -1,0 +1,915 @@
+/* =========================
+   TENTANG KAMI — TEAM CARDS
+   ========================= */
+
+.tentang-kami {
+  --tk-ivory: #f5f2e9;
+  --tk-paper: #fffdf7;
+  --tk-navy: var(--warna-navy, #16284a);
+  --tk-sage: var(--warna-sage, #8fa98c);
+  min-height: calc(100svh - 150px);
+  padding: clamp(3.5rem, 7vw, 6.5rem) 1.25rem;
+  color: var(--tk-navy);
+  background:
+    radial-gradient(ellipse at 8% 10%, rgb(143 169 140 / 18%), transparent 25rem),
+    var(--tk-ivory);
+}
+
+.tim-section,
+.cerita-section {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+
+.tim-heading {
+  max-width: 690px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tim-eyebrow {
+  margin: 0 0 0.9rem;
+  color: #718b70;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.tim-title,
+.cerita-copy h2 {
+  margin: 0;
+  font-family: var(--font-judul, Georgia, serif);
+  font-size: clamp(2.35rem, 5.5vw, 4.6rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.tim-intro {
+  max-width: 550px;
+  margin: 1.2rem auto 0;
+  color: #5f6870;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.team-deck {
+  position: relative;
+  display: grid;
+  min-height: 430px;
+  place-items: center;
+  margin: clamp(2.5rem, 6vw, 4.5rem) auto 0;
+  perspective: 1400px;
+}
+
+.team-cards {
+  position: relative;
+  width: min(100%, 760px);
+  height: 390px;
+  transform-style: preserve-3d;
+}
+
+.team-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  border: 0;
+  background: rgb(22 40 74 / 12%);
+  cursor: default;
+}
+
+.team-card-navigation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 570px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.team-card-navigation__button {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgb(22 40 74 / 18%);
+  border-radius: 50%;
+  color: var(--tk-navy);
+  background: #fffdf7;
+  box-shadow: 0 8px 22px rgb(22 40 74 / 14%);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.team-card-navigation__button:hover {
+  transform: scale(1.08);
+  background: #e8eee4;
+}
+
+.team-card-navigation__button:focus-visible {
+  outline: 3px solid #718b70;
+  outline-offset: 3px;
+}
+
+.team-card-navigation__count {
+  position: absolute;
+  top: calc(100% + 175px);
+  left: 50%;
+  padding: 0.35rem 0.65rem;
+  border-radius: 30px;
+  color: var(--tk-navy);
+  background: #fffdf7;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 14px rgb(22 40 74 / 10%);
+}
+
+.team-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(150px, 21vw, 218px);
+  height: clamp(235px, 31vw, 330px);
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1200px;
+  transform-origin: 50% 90%;
+  transition:
+    transform 650ms cubic-bezier(.2,.75,.25,1),
+    filter 450ms ease,
+    opacity 450ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.team-card:focus-visible {
+  outline: 3px solid #718b70;
+  outline-offset: 8px;
+}
+
+.team-card__inner {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  transition: transform 850ms cubic-bezier(.2,.72,.18,1);
+}
+
+.team-card.is-open {
+  z-index: 20;
+  transform: translate(-50%, -57%) rotate(0deg) scale(1.12) !important;
+}
+
+.team-card.is-open .team-card__inner {
+  transform: rotateY(180deg);
+}
+
+.team-card.is-muted {
+  opacity: 0.2;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.team-card--1 { z-index: 1; transform: translate(-50%, -48%) rotate(-27deg) translate(-205px, 20px); }
+.team-card--2 { z-index: 2; transform: translate(-50%, -50%) rotate(-17deg) translate(-130px, 3px); }
+.team-card--3 { z-index: 3; transform: translate(-50%, -52%) rotate(-7deg) translate(-53px, -2px); }
+.team-card--4 { z-index: 4; transform: translate(-50%, -52%) rotate(7deg) translate(53px, -2px); }
+.team-card--5 { z-index: 5; transform: translate(-50%, -50%) rotate(17deg) translate(130px, 3px); }
+.team-card--6 { z-index: 6; transform: translate(-50%, -48%) rotate(27deg) translate(205px, 20px); }
+
+.team-card__front,
+.team-card__back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #d8d1c0;
+  border-radius: inherit;
+  background: var(--tk-paper);
+  box-shadow: 0 18px 35px rgb(35 45 38 / 17%), inset 0 0 0 5px #f1eee4, inset 0 0 0 6px #d8d1c0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.team-card__front {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 100% 100%, rgb(143 169 140 / 40%) 0 17%, transparent 17.5%),
+    radial-gradient(ellipse at 0 0, rgb(143 169 140 / 28%) 0 15%, transparent 15.5%),
+    var(--tk-paper);
+}
+
+.team-card__front-logo {
+  color: #294638;
+  font-family: var(--font-judul, Georgia, serif);
+  font-size: clamp(4.5rem, 8vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.12em;
+}
+
+.team-card__front-name {
+  margin-top: 0.65rem;
+  color: var(--tk-navy);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.playing-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: #294638;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.playing-corner--top { top: 19px; left: 17px; }
+.playing-corner--bottom { right: 17px; bottom: 19px; transform: rotate(180deg); }
+.playing-suit { margin-top: 3px; font-size: 0.8rem; }
+
+.team-card__back {
+  flex-direction: column;
+  transform: rotateY(180deg);
+  padding: 10px;
+  background: #fffdf7;
+}
+
+.team-card__photo {
+  position: relative;
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 7px;
+  background:
+    radial-gradient(circle at 50% 28%, rgb(255 255 255 / 65%), transparent 35%),
+    linear-gradient(145deg, #dce4d7, #a9bda7 58%, #718b70);
+}
+
+.team-card__photo-placeholder {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #435b49;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.team-card__photo-placeholder svg {
+  width: 76px;
+  fill: #718b70;
+}
+
+.team-card__number {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  padding: 0.3rem 0.45rem;
+  border-radius: 30px;
+  color: #fff;
+  background: rgb(22 40 74 / 75%);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.team-card__details {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 5px 5px;
+  text-align: left;
+}
+
+.team-card__name {
+  color: var(--tk-navy);
+  font-family: var(--font-judul, Georgia, serif);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 600;
+}
+
+.team-card__role {
+  margin-top: 2px;
+  color: #718b70;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-card__description {
+  margin-top: 7px;
+  color: #626a68;
+  font-size: 0.65rem;
+  line-height: 1.45;
+}
+
+.team-card__close {
+  margin-top: 8px;
+  color: #8a9188;
+  font-size: 0.56rem;
+}
+
+.team-card:not(.is-open):hover {
+  filter: drop-shadow(0 14px 12px rgb(22 40 74 / 15%));
+}
+
+.team-card--1:not(.is-open):hover { transform: translate(-50%, -55%) rotate(-27deg) translate(-205px, 5px); }
+.team-card--2:not(.is-open):hover { transform: translate(-50%, -57%) rotate(-17deg) translate(-130px, -12px); }
+.team-card--3:not(.is-open):hover { transform: translate(-50%, -59%) rotate(-7deg) translate(-53px, -17px); }
+.team-card--4:not(.is-open):hover { transform: translate(-50%, -59%) rotate(7deg) translate(53px, -17px); }
+.team-card--5:not(.is-open):hover { transform: translate(-50%, -57%) rotate(17deg) translate(130px, -12px); }
+.team-card--6:not(.is-open):hover { transform: translate(-50%, -55%) rotate(27deg) translate(205px, 5px); }
+
+.tim-hint {
+  margin: -0.1rem 0 0;
+  color: #7a8279;
+  font-size: 0.78rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.cerita-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-top: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid rgb(22 40 74 / 13%);
+}
+
+.cerita-copy h2 {
+  max-width: 430px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.cerita-copy > p:last-child {
+  max-width: 420px;
+  color: #626a68;
+  line-height: 1.8;
+}
+
+.panasea-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(130px, 210px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.7rem, 1.8vw, 1.5rem);
+}
+
+.panasea-lyrics {
+  min-width: 0;
+  color: #718b70;
+  font-family: var(--font-judul, Georgia, serif);
+  font-size: clamp(0.78rem, 1.1vw, 1rem);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.panasea-lyrics p { margin: 0; }
+.panasea-lyrics__mark {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--tk-navy);
+  font-family: Georgia, serif;
+  font-size: 2.2rem;
+  line-height: 0.8;
+  opacity: 0.65;
+}
+.panasea-lyrics__credit {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--tk-navy);
+  font-family: var(--font-isi, sans-serif);
+  font-size: 0.7rem;
+}
+.panasea-video { width: 100%; min-width: 0; }
+.panasea-video__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #171717;
+  box-shadow: 0 14px 35px rgb(22 40 74 / 12%);
+}
+.panasea-video__caption {
+  margin: 0.55rem 0 0;
+  color: var(--tk-navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: center;
+}
+.panasea-audio {
+  grid-column: 2;
+  width: 100%;
+  margin: 1.5rem auto 0;
+}
+.panasea-audio__title {
+  margin: 0 0 0.5rem;
+  color: var(--tk-navy);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.panasea-audio audio { display: block; width: 100%; }
+.panasea-audio__note {
+  margin: 0.5rem 0 0;
+  color: #727b75;
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .tentang-kami { padding: 3.5rem 1rem; }
+  .team-deck { min-height: 340px; margin-top: 2rem; }
+  .team-cards { height: 320px; }
+  .team-card-navigation {
+    top: auto;
+    bottom: -8px;
+    width: min(100%, 230px);
+    transform: translateX(-50%);
+  }
+  .team-card-navigation__button { width: 42px; height: 42px; }
+  .team-card-navigation__count {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .team-card {
+    width: clamp(112px, 24vw, 165px);
+    height: clamp(180px, 38vw, 250px);
+  }
+  .team-card--1 { transform: translate(-50%, -48%) rotate(-27deg) translate(-130px, 18px); }
+  .team-card--2 { transform: translate(-50%, -50%) rotate(-17deg) translate(-82px, 5px); }
+  .team-card--3 { transform: translate(-50%, -52%) rotate(-7deg) translate(-34px, -2px); }
+  .team-card--4 { transform: translate(-50%, -52%) rotate(7deg) translate(34px, -2px); }
+  .team-card--5 { transform: translate(-50%, -50%) rotate(17deg) translate(82px, 5px); }
+  .team-card--6 { transform: translate(-50%, -48%) rotate(27deg) translate(130px, 18px); }
+  .team-card.is-open { transform: translate(-50%, -55%) rotate(0deg) scale(1.08) !important; }
+  .team-card--1:not(.is-open):hover { transform: translate(-50%, -55%) rotate(-27deg) translate(-130px, 3px); }
+  .team-card--2:not(.is-open):hover { transform: translate(-50%, -57%) rotate(-17deg) translate(-82px, -8px); }
+  .team-card--3:not(.is-open):hover { transform: translate(-50%, -59%) rotate(-7deg) translate(-34px, -12px); }
+  .team-card--4:not(.is-open):hover { transform: translate(-50%, -59%) rotate(7deg) translate(34px, -12px); }
+  .team-card--5:not(.is-open):hover { transform: translate(-50%, -57%) rotate(17deg) translate(82px, -8px); }
+  .team-card--6:not(.is-open):hover { transform: translate(-50%, -55%) rotate(27deg) translate(130px, 3px); }
+  .cerita-section { grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; }
+  .cerita-copy { text-align: center; }
+  .cerita-copy h2, .cerita-copy > p:last-child { margin-inline: auto; }
+  .panasea-layout { grid-template-columns: 1fr minmax(115px, 180px) 1fr; gap: 0.7rem; }
+  .panasea-lyrics { font-size: 0.75rem; }
+  .panasea-audio { grid-column: 1 / -1; max-width: 320px; }
+}
+
+@media (max-width: 420px) {
+  .team-deck { min-height: 285px; }
+  .team-cards { height: 275px; }
+  .team-card { width: 105px; height: 170px; }
+  .team-card--1 { transform: translate(-50%, -48%) rotate(-25deg) translate(-105px, 17px); }
+  .team-card--2 { transform: translate(-50%, -50%) rotate(-16deg) translate(-67px, 5px); }
+  .team-card--3 { transform: translate(-50%, -52%) rotate(-6deg) translate(-28px, -2px); }
+  .team-card--4 { transform: translate(-50%, -52%) rotate(6deg) translate(28px, -2px); }
+  .team-card--5 { transform: translate(-50%, -50%) rotate(16deg) translate(67px, 5px); }
+  .team-card--6 { transform: translate(-50%, -48%) rotate(25deg) translate(105px, 17px); }
+  .team-card.is-open { width: 190px; height: 285px; transform: translate(-50%, -53%) rotate(0deg) scale(1) !important; }
+  .team-card__back { padding: 8px; }
+  .team-card__name { font-size: 1rem; }
+  .team-card__description { font-size: 0.58rem; }
+  .panasea-layout { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; }
+  .panasea-video { grid-row: 1; width: min(100%, 210px); margin-inline: auto; }
+  .panasea-lyrics { font-size: 0.9rem; text-align: center; }
+  .panasea-lyrics--left { grid-row: 2; }
+  .panasea-lyrics--right { grid-row: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-card, .team-card__inner { transition-duration: 0.01ms !important; }
+}
+
+/* =========================
+   PENYESUAIAN KARTU UNTUK HP
+   ========================= */
+@media (max-width: 760px) {
+  /* Tulisan pada sisi depan kartu dibuat sedikit lebih kecil. */
+  .team-card__front-name {
+    font-size: 0.68rem;
+    letter-spacing: 0.025em;
+  }
+
+  .team-card__front-logo {
+    font-size: clamp(3.6rem, 13vw, 4.6rem);
+  }
+
+  .playing-corner {
+    font-size: 0.85rem;
+  }
+
+  .playing-corner--top { top: 15px; left: 13px; }
+  .playing-corner--bottom { right: 13px; bottom: 15px; }
+
+  /* Kartu terbuka dibuat seperti panel profil, tetapi tetap menyisakan ruang di layar. */
+  .team-deck.has-open-card {
+    min-height: 465px;
+    z-index: 11;
+  }
+
+  .team-cards {
+    height: 430px;
+  }
+
+  .team-card.is-open {
+    top: 50%;
+    left: 50%;
+    width: min(76vw, 280px);
+    height: min(106vw, 390px);
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+  }
+
+  .team-card__back {
+    padding: 9px;
+  }
+
+  .team-card__photo {
+    flex: 0 0 58%;
+    min-height: 0;
+  }
+
+  .team-card__details {
+    flex: 1;
+    min-height: 0;
+    padding: 10px 5px 4px;
+  }
+
+  .team-card__name {
+    font-size: clamp(1rem, 4.4vw, 1.2rem);
+    line-height: 1.2;
+  }
+
+  .team-card__role {
+    font-size: 0.62rem;
+  }
+
+  .team-card__description {
+    margin-top: 6px;
+    font-size: 0.62rem;
+    line-height: 1.4;
+  }
+
+  .team-card__close {
+    margin-top: 6px;
+    font-size: 0.54rem;
+  }
+
+  .team-card-navigation {
+    bottom: -4px;
+  }
+}
+
+@media (max-width: 420px) {
+  .team-card__front-name {
+    font-size: 0.62rem;
+  }
+
+  .team-card__front-logo {
+    font-size: 3.5rem;
+  }
+
+  .team-card.is-open {
+    width: min(78vw, 270px);
+    height: min(108vw, 370px);
+  }
+}
+
+
+/* =========================
+   PERBAIKAN INTERAKSI KARTU
+   ========================= */
+
+/* Kartu tetap berada di atas backdrop yang menutupi seluruh halaman. */
+.team-deck.has-open-card {
+  position: relative;
+  z-index: 9999;
+}
+
+.team-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgb(22 40 74 / 22%);
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.team-card-navigation {
+  z-index: 30;
+}
+
+.team-card-navigation__button {
+  touch-action: manipulation;
+}
+
+
+/* =========================
+   SUSUNAN BARU HALAMAN TENTANG KAMI
+   ========================= */
+
+/* Cerita pembuka berada di bagian paling atas. */
+.cerita-section {
+  display: block;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 0 0 clamp(2.5rem, 5vw, 4rem);
+  border-top: 0;
+}
+
+.cerita-copy {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cerita-copy h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(2.35rem, 5.5vw, 4.6rem);
+}
+
+.cerita-copy > p:last-child {
+  max-width: 620px;
+  margin: 1.2rem auto 0;
+  color: #626a68;
+  line-height: 1.8;
+}
+
+/* Kartu berada di tengah halaman, judul tim berada setelah kartu. */
+.tim-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.tim-section > .team-deck {
+  order: 1;
+}
+
+.tim-heading--bottom {
+  order: 2;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.tim-heading--bottom .tim-intro {
+  margin-top: 1rem;
+}
+
+.tim-hint {
+  margin-top: 1rem;
+}
+
+/* Pemutar lagu menjadi elemen paling bawah; video dan lirik dihilangkan. */
+.panasea-audio-section {
+  width: min(100%, 520px);
+  margin: clamp(3rem, 7vw, 5.5rem) auto 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgb(22 40 74 / 13%);
+}
+
+.panasea-audio {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.panasea-audio__title {
+  margin: 0 0 0.8rem;
+  color: var(--tk-navy);
+  font-family: var(--font-judul, Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.panasea-audio audio {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .cerita-section {
+    padding-bottom: 2rem;
+  }
+
+  .cerita-copy h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .tim-heading--bottom {
+    margin-top: 2rem;
+  }
+
+  .panasea-audio-section {
+    margin-top: 3rem;
+  }
+}
+
+/* =========================
+   NAVIGASI KARTU: HP & DESKTOP
+   Tombol dan nomor berada dalam satu baris di bawah kartu.
+   ========================= */
+.team-card-navigation {
+  top: auto;
+  bottom: -8px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.team-card-navigation__button {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+}
+
+.team-card-navigation__count {
+  position: static;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  min-height: 44px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  text-align: center;
+  transform: none;
+}
+
+@media (max-width: 760px) {
+  .team-card-navigation {
+    top: auto;
+    bottom: -4px;
+    width: max-content;
+    gap: 10px;
+    transform: translateX(-50%);
+  }
+
+  .team-card-navigation__button {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .team-card-navigation__count {
+    min-width: 72px;
+    min-height: 40px;
+    padding-inline: 0.7rem;
+    font-size: 0.74rem;
+  }
+}
+
+
+/* =========================
+   NAVIGASI & SCROLL LOCK — FIX FINAL
+   ========================= */
+
+/* Deck menjadi lapisan teratas selama satu kartu dibuka. */
+.team-deck.has-open-card {
+  position: relative;
+  z-index: 9999;
+  isolation: isolate;
+}
+
+/* Backdrop berada di bawah kartu, tetapi menutupi area halaman. */
+.team-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgb(22 40 74 / 22%);
+  cursor: default;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Kartu dan navigasi tetap berada di atas backdrop. */
+.team-cards {
+  position: relative;
+  z-index: 1;
+}
+
+.team-card {
+  z-index: 2;
+}
+
+.team-card.is-open {
+  z-index: 20;
+}
+
+.team-card-navigation {
+  position: fixed;
+  top: auto;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100vw - 28px);
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.team-card-navigation__button {
+  display: grid;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0 0 3px;
+  border: 1px solid rgb(22 40 74 / 18%);
+  border-radius: 50%;
+  color: var(--tk-navy);
+  background: #fffdf7;
+  box-shadow: 0 8px 22px rgb(22 40 74 / 18%);
+  font-family: Arial, sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.team-card-navigation__button:active {
+  transform: scale(0.94);
+}
+
+.team-card-navigation__count {
+  position: static;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  min-height: 44px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  color: var(--tk-navy);
+  background: #fffdf7;
+  box-shadow: 0 8px 22px rgb(22 40 74 / 18%);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .team-card-navigation {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+
+  .team-card-navigation__button {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .team-card-navigation__count {
+    min-width: 78px;
+    min-height: 42px;
+    font-size: 0.76rem;
+  }
+}

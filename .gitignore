@@ -1,0 +1,20 @@
+```gitignore
+# Paket yang diunduh npm
+node_modules/
+
+# Hasil build Next.js
+.next/
+out/
+
+# Kunci rahasia
+.env
+.env.local
+.env.*.local
+!.env.local.example
+
+# File sistem
+.DS_Store
+npm-debug.log*
+```
+# File cadangan lokal
+*.backup

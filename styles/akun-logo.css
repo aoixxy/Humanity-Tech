@@ -1,0 +1,24 @@
+/* Logo robot HumanityTech */
+.akun-brand {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto clamp(1.25rem, 3vw, 2rem);
+  text-decoration: none;
+  width: 100%;
+}
+.akun-brand-logo {
+  display: block;
+  width: clamp(76px, 14vw, 108px);
+  height: auto;
+  object-fit: contain;
+}
+.akun-panel-logo {
+  display: block;
+  width: clamp(104px, 16vw, 150px);
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto clamp(1rem, 2.5vw, 1.75rem);
+}
+
