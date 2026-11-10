@@ -11,6 +11,12 @@ npm install
 npm run dev
 ```
 
+## Tampilan Aplikasi
+
+![ss](public/img/ss1.png)
+![ss](public/img/ss2.png)
+
+
 http://localhost:3000
 
 ## Struktur folder
